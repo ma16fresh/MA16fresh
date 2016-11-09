@@ -10,13 +10,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class NextActivity extends Activity implements View.OnClickListener {
 
     SoundPool soundPool;
     int wakeUp;
     int streamId;
     String message;
-
+    Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +33,6 @@ public class NextActivity extends Activity implements View.OnClickListener {
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
 
-        ImageView level1Img = (ImageView) findViewById(R.id.level1img);
-        level1Img.setImageResource(R.mipmap.ic_launcher);
         Intent i = getIntent();
         message = i.getStringExtra("message");
 
@@ -54,6 +55,7 @@ public class NextActivity extends Activity implements View.OnClickListener {
                 Intent intent = new Intent(this, SecondActivity.class);
 
                 if (message.equals("ONLINE")) {
+                    NextActivity.this.finish();
                     startActivity(intent);
                     System.out.println("投稿する");
                     SoundStop();
@@ -96,5 +98,13 @@ public class NextActivity extends Activity implements View.OnClickListener {
 
     public void SoundStart() {
         streamId = soundPool.play(wakeUp, 1F, 1F, 0, -1, 1F);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //解放しないとメモリ使用量は減らない
+        this.testMap.clear();
+        this.testMap = null;
     }
 }

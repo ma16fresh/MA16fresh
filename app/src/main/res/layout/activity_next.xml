@@ -7,17 +7,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/level1"
     tools:context="com.example.miura_j.ma16fresh.MainActivity">
 
 
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:text="Button click next"
         android:id="@+id/nextbtn"
-        android:layout_centerVertical="true"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/returnbtn"
         android:layout_centerHorizontal="true" />
 
     <TextView

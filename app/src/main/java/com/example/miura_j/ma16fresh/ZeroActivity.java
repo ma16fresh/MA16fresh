@@ -9,41 +9,28 @@ import android.widget.Button;
 import java.util.HashMap;
 import java.util.Map;
 
-import facebook4j.FacebookException;
-import twitter4j.TwitterException;
 
-
-public class SecondActivity extends Activity implements View.OnClickListener {
-    TwitterPost tp = new TwitterPost();
-    FacebookPost fp = new FacebookPost();
+public class ZeroActivity extends Activity implements View.OnClickListener {
+    String message;
     Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_zero);
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
-    }
 
-    protected void onStart(){
+        Intent i = getIntent();
+        message = i.getStringExtra("message");
+    }
+    protected void onStart() {
         super.onStart();
-        try {
-            tp.twitterPost(this);
-        } catch (TwitterException e) {
-            e.printStackTrace();
-        }
-        try {
-            fp.facebookPost(this);
-        } catch (FacebookException e) {
-            e.printStackTrace();
-        }
     }
 
     public void onClick(View view) {
-        String result = "next go";
-        Intent intent = new Intent(this, ThirdActivity.class);
-        intent.putExtra("message",result);
-        SecondActivity.this.finish();
+        Intent intent = new Intent(this, NextActivity.class);
+        intent.putExtra("message",message);
+        ZeroActivity.this.finish();
         startActivity(intent);
     }
 
