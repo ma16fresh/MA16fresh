@@ -16,7 +16,7 @@ import twitter4j.TwitterException;
 public class ThirdActivity extends Activity implements View.OnClickListener {
     SlackPost sp = new SlackPost();
     String requestJSON = "{\"text\": \"こいつ→ @miura-j 居眠りしてます。評価下げてください。\", \"channel\": \"@miura-j\", \"link_names\": 1}";
-    Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +37,4 @@ public class ThirdActivity extends Activity implements View.OnClickListener {
         startActivity(intent);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        //解放しないとメモリ使用量は減らない
-        this.testMap.clear();
-        this.testMap = null;
-    }
 }

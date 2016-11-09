@@ -19,7 +19,6 @@ public class NextActivity extends Activity implements View.OnClickListener {
     int wakeUp;
     int streamId;
     String message;
-    Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,13 +97,5 @@ public class NextActivity extends Activity implements View.OnClickListener {
 
     public void SoundStart() {
         streamId = soundPool.play(wakeUp, 1F, 1F, 0, -1, 1F);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        //解放しないとメモリ使用量は減らない
-        this.testMap.clear();
-        this.testMap = null;
     }
 }

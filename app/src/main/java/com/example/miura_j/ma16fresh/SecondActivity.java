@@ -16,7 +16,7 @@ import twitter4j.TwitterException;
 public class SecondActivity extends Activity implements View.OnClickListener {
     TwitterPost tp = new TwitterPost();
     FacebookPost fp = new FacebookPost();
-    Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +47,4 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         startActivity(intent);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        //解放しないとメモリ使用量は減らない
-        this.testMap.clear();
-        this.testMap = null;
-    }
 }
