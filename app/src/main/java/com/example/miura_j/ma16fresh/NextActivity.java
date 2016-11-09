@@ -83,7 +83,6 @@ public class NextActivity extends Activity implements View.OnClickListener {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
                 if (0 == status) {
-                    System.out.println(status);
                     SoundStart();
                 }
             }
