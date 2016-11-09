@@ -12,9 +12,8 @@ import java.util.Map;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     String message;
-    boolean netStatus;
-
     Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +23,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Button shopbtn = (Button) findViewById(R.id.shopbtn);
         //shopbtn.setVisibility(View.INVISIBLE);
         shopbtn.setOnClickListener(this);
-    }
-
-    protected void onResume() {
-        super.onResume();
-        //network 初期情報
     }
 
     //button event handler
@@ -46,5 +40,5 @@ public class MainActivity extends Activity implements View.OnClickListener {
         //解放しないとメモリ使用量は減らない
         this.testMap.clear();
         this.testMap = null;
-    }
+
 }
