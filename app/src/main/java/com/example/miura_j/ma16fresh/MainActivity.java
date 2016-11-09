@@ -10,11 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
     String message;
     boolean connect;
-
+    Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +54,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         textViewDisp(message);
 
         //Intent(新しい画面ページ生成)
-        Intent intent = new Intent(this, NextActivity.class);
+        Intent intent = new Intent(this, ZeroActivity.class);
         intent.putExtra("message", message);
+        MainActivity.this.finish();
         startActivity(intent);
     }
 
@@ -76,5 +80,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void toastDisp(String message) {
 
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //解放しないとメモリ使用量は減らない
+        this.testMap.clear();
+        this.testMap = null;
     }
 }

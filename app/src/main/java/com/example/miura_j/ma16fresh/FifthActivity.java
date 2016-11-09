@@ -19,12 +19,12 @@ public class FifthActivity extends Activity {
 
     protected void onStart() {
         super.onStart();
-        try {
+        /*try {
             l5.sendgrid(this);
         } catch (SendGridException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
