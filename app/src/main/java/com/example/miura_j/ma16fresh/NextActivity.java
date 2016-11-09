@@ -7,7 +7,6 @@ import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -20,6 +19,7 @@ public class NextActivity extends Activity implements View.OnClickListener {
     int streamId;
     String message;
     Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
+    NetCheck nc = new NetCheck(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,20 +32,6 @@ public class NextActivity extends Activity implements View.OnClickListener {
         returnbtn.setOnClickListener(this);
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
-
-        Intent i = getIntent();
-        message = i.getStringExtra("message");
-
-    }
-
-    protected void onStart() {
-        super.onStart();
-
-    }
-
-    protected void onResume() {
-        super.onResume();
-        // SoundStart();
     }
 
     public void onClick(View view) {
@@ -54,10 +40,9 @@ public class NextActivity extends Activity implements View.OnClickListener {
             case R.id.nextbtn:
                 Intent intent = new Intent(this, SecondActivity.class);
 
-                if (message.equals("ONLINE")) {
+                if (nc.checkNetwork()) {
                     NextActivity.this.finish();
                     startActivity(intent);
-                    System.out.println("投稿する");
                     SoundStop();
                 } else {
                     Toast.makeText(NextActivity.this, "ネット繋げ！！！！！！", Toast.LENGTH_SHORT).show();
