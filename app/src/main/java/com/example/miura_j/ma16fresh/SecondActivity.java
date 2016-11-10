@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import facebook4j.FacebookException;
 import twitter4j.TwitterException;
 
@@ -16,13 +13,17 @@ import twitter4j.TwitterException;
 public class SecondActivity extends Activity implements View.OnClickListener {
     TwitterPost tp = new TwitterPost();
     FacebookPost fp = new FacebookPost();
+    SoundMng sm = new SoundMng();
+    int level =2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        sm.load(getApplicationContext());
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
+        sm.SoundStart(level);
     }
 
     protected void onStart(){
@@ -40,6 +41,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
     }
 
     public void onClick(View view) {
+        sm.SoundStop();
         String result = "next go";
         Intent intent = new Intent(this, ThirdActivity.class);
         intent.putExtra("message",result);

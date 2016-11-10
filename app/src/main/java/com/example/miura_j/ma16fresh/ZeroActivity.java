@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class ZeroActivity extends Activity implements View.OnClickListener {
     String message;
+    int level =0;
+    SoundMng sm = new SoundMng();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +18,10 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_zero);
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
-
+        sm.load(getApplicationContext());
         Intent i = getIntent();
         message = i.getStringExtra("message");
+        sm.SoundStart(level);
     }
     protected void onStart() {
         super.onStart();
@@ -30,6 +30,7 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         Intent intent = new Intent(this, NextActivity.class);
         intent.putExtra("message",message);
+        sm.SoundStop();
         ZeroActivity.this.finish();
         startActivity(intent);
     }
