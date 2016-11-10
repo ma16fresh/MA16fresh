@@ -32,6 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Intent intent = new Intent(this, ZeroActivity.class);
         MainActivity.this.finish();
         startActivity(intent);
+
     }
 
     @Override
@@ -41,4 +42,5 @@ public class MainActivity extends Activity implements View.OnClickListener {
         this.testMap.clear();
         this.testMap = null;
 
+    }
 }
