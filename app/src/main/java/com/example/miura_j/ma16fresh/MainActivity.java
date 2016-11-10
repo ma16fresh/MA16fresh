@@ -19,7 +19,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         //button定義
-        Button shopbtn = (Button) findViewById(R.id.shopbtn);
+        Button shopbtn = (Button) findViewById(R.id.startbtn);
         //shopbtn.setVisibility(View.INVISIBLE);
         shopbtn.setOnClickListener(this);
     }

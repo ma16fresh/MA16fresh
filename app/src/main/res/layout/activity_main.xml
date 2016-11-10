@@ -13,19 +13,14 @@
 
     <Button
         android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:text="Button click"
-        android:id="@+id/shopbtn"
+        android:layout_height="50dp"
+        android:text="START"
+        android:id="@+id/startbtn"
         android:layout_marginBottom="140dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/resultText"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:background="@drawable/btn_style"/>
 </RelativeLayout>
