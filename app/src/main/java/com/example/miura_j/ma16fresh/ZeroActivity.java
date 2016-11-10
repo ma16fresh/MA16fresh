@@ -8,7 +8,7 @@ import android.widget.Button;
 
 
 public class ZeroActivity extends Activity implements View.OnClickListener {
-    String message;
+
     int level =0;
     SoundMng sm = new SoundMng();
 
@@ -20,7 +20,6 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
         nextbtn.setOnClickListener(this);
         sm.load(getApplicationContext());
         Intent i = getIntent();
-        message = i.getStringExtra("message");
         sm.SoundStart(level);
     }
     protected void onStart() {
@@ -29,7 +28,6 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
 
     public void onClick(View view) {
         Intent intent = new Intent(this, NextActivity.class);
-        intent.putExtra("message",message);
         sm.SoundStop();
         ZeroActivity.this.finish();
         startActivity(intent);

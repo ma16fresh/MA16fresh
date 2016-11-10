@@ -13,7 +13,7 @@ import java.util.Map;
 public class NextActivity extends Activity implements View.OnClickListener {
 
     String message;
-    int level =1;
+    int level = 1;
 
     Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
     NetCheck nc = new NetCheck(this);
@@ -26,8 +26,6 @@ public class NextActivity extends Activity implements View.OnClickListener {
         sm.load(getApplicationContext());
 
         //ボタン生成
-        Button returnbtn = (Button) findViewById(R.id.returnbtn);
-        returnbtn.setOnClickListener(this);
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
         sm.SoundStart(level);
@@ -35,23 +33,14 @@ public class NextActivity extends Activity implements View.OnClickListener {
 
     public void onClick(View view) {
         sm.SoundStop();
-        switch (view.getId()) {
-            case R.id.nextbtn:
-                Intent intent = new Intent(this, SecondActivity.class);
-
-                if (nc.checkNetwork()) {
-                    NextActivity.this.finish();
-                    startActivity(intent);
-                   // SoundStop();
-                } else {
-                    Toast.makeText(NextActivity.this, "ネット繋げ！！！！！！", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            case R.id.returnbtn:
-                //Intent mainIntent = new Intent(this, MainActivity.class);
-                //startActivity(mainIntent);
-                break;
+        Intent intent = new Intent(this, SecondActivity.class);
+        if (nc.checkNetwork()) {
+            NextActivity.this.finish();
+            startActivity(intent);
+        } else {
+            Toast.makeText(NextActivity.this, "ネット繋げ！！！！！！", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public void SoundLoad() {

@@ -13,7 +13,7 @@ public class FourthActivity extends Activity implements View.OnClickListener {
     SlackPost sp = new SlackPost();
     YahooShopping ap = new YahooShopping();
     String clockUrl = null;
-    int level =4;
+    int level = 4;
     SoundMng sm = new SoundMng();
 
     @Override
@@ -25,6 +25,7 @@ public class FourthActivity extends Activity implements View.OnClickListener {
         nextbtn.setOnClickListener(this);
         sm.SoundStart(level);
     }
+
     protected void onStart() {
         super.onStart();
         try {
@@ -33,14 +34,12 @@ public class FourthActivity extends Activity implements View.OnClickListener {
             e.printStackTrace();
         }
         String requestJSON = "{\"text\": \"こいつ→ @miura-j 居眠りしてます。これ送りつけてください(給料から天引きで＾＾)。\\r\\n" + clockUrl + "\", \"channel\": \"@miura-j\", \"link_names\": 1}";
-        sp.slackPost(this,requestJSON);
+        sp.slackPost(this, requestJSON);
     }
 
     public void onClick(View view) {
         sm.SoundStop();
-        String result = "next go";
         Intent intent = new Intent(this, FifthActivity.class);
-        intent.putExtra("message",result);
         FourthActivity.this.finish();
         startActivity(intent);
     }

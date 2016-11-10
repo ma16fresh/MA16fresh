@@ -12,10 +12,12 @@ public class ThirdActivity extends Activity implements View.OnClickListener {
     String requestJSON = "{\"text\": \"こいつ→ @miura-j 居眠りしてます。評価下げてください。\", \"channel\": \"@miura-j\", \"link_names\": 1}";
     int level =3;
     SoundMng sm = new SoundMng();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
+        sm.load(getApplicationContext());
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
         sm.SoundStart(level);
@@ -27,9 +29,7 @@ public class ThirdActivity extends Activity implements View.OnClickListener {
 
     public void onClick(View view) {
         sm.SoundStop();
-        String result = "next go";
         Intent intent = new Intent(this, FourthActivity.class);
-        intent.putExtra("message",result);
         ThirdActivity.this.finish();
         startActivity(intent);
     }
