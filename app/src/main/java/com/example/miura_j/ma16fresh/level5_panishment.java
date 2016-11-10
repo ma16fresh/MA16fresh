@@ -14,8 +14,8 @@ public class level5_panishment {
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
         String apiKey            = System.getenv(context.getString(R.string.sendgridKey));
 
-        String tos             = System.getenv("miura-j@gnavi.co.jp")/*.split(",",0)*/;
-        String from              = System.getenv("ma16fresh@yahoo.co.jp");
+        String tos             = System.getenv(context.getString(R.string.tosAddress))/*.split(",",0)*/;
+        String from              = System.getenv(context.getString(R.string.fromAddress));
 
         SendGrid.Email email = new SendGrid.Email();
         email.addSmtpApiTo(tos);

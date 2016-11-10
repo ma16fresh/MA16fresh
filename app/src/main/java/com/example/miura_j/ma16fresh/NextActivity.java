@@ -7,24 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class NextActivity extends Activity implements View.OnClickListener {
-
-    String message;
+    SoundMng sm = new SoundMng();
     int level = 1;
 
-    Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
     NetCheck nc = new NetCheck(this);
-    SoundMng sm = new SoundMng();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next);
         sm.load(getApplicationContext());
-
         //ボタン生成
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
@@ -40,11 +33,12 @@ public class NextActivity extends Activity implements View.OnClickListener {
         } else {
             Toast.makeText(NextActivity.this, "ネット繋げ！！！！！！", Toast.LENGTH_SHORT).show();
         }
-
     }
+}
 
+
+/*ちょっとこれは取っておいて
     public void SoundLoad() {
-        /*
         AudioAttributes attr = new AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_MEDIA)
                 .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
@@ -62,9 +56,9 @@ public class NextActivity extends Activity implements View.OnClickListener {
                     SoundStart();
                 }
             }
-        });*/
+        });
     }
-/*
+
     public void SoundStop() {
         soundPool.stop(streamId);
         soundPool.release();
@@ -74,4 +68,3 @@ public class NextActivity extends Activity implements View.OnClickListener {
         streamId = soundPool.play(wakeUp, 1F, 1F, 0, -1, 1F);
     }
     */
-}

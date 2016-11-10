@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-
 public class ZeroActivity extends Activity implements View.OnClickListener {
-
     int level =0;
     SoundMng sm = new SoundMng();
 
@@ -16,10 +14,12 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zero);
+        sm.load(getApplicationContext());
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
-        sm.load(getApplicationContext());
+
         Intent i = getIntent();
+
         sm.SoundStart(level);
     }
     protected void onStart() {
