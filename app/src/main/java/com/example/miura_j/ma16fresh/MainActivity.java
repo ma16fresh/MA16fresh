@@ -6,13 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MainActivity extends Activity implements View.OnClickListener {
-
-    String message;
-    Map<Integer, ByteWrapper> testMap = new HashMap<Integer, ByteWrapper>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +14,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         //button定義
-        Button shopbtn = (Button) findViewById(R.id.shopbtn);
+        Button shopbtn = (Button) findViewById(R.id.startbtn);
         //shopbtn.setVisibility(View.INVISIBLE);
         shopbtn.setOnClickListener(this);
     }
@@ -32,15 +26,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Intent intent = new Intent(this, ZeroActivity.class);
         MainActivity.this.finish();
         startActivity(intent);
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        //解放しないとメモリ使用量は減らない
-        this.testMap.clear();
-        this.testMap = null;
 
     }
 }
