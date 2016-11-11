@@ -34,11 +34,17 @@ public class SoundMng {
                 if (0 == status) {
                     loadStatus = true;
                 }
+                System.out.println("??????????????????????????");
+                System.out.println(loadStatus);
+                System.out.println("??????????????????????????");
             }
         });
     }
     public void SoundStart(int level) {
-        if(loadStatus) {
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(loadStatus);
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        if(loadStatus  == true) {
             if(level == 0) {
                 streamId = soundPool.play(otsukaresama, 1F, 1F, 0, 0, 1F);
 
