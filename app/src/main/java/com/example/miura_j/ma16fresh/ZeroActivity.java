@@ -19,11 +19,10 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
         nextbtn.setOnClickListener(this);
 
         Intent i = getIntent();
-
-        sm.SoundStart(level);
     }
     protected void onStart() {
         super.onStart();
+        sm.SoundStart(level);
     }
 
     public void onClick(View view) {
@@ -32,5 +31,4 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
         ZeroActivity.this.finish();
         startActivity(intent);
     }
-
 }
