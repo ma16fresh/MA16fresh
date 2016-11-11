@@ -14,7 +14,9 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zero);
-        sm.load(getApplicationContext());
+
+        sm.load(getApplicationContext(),level);
+
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
 
@@ -22,7 +24,6 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
     }
     protected void onStart() {
         super.onStart();
-        sm.SoundStart(level);
     }
 
     public void onClick(View view) {

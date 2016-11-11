@@ -12,8 +12,7 @@ public class SoundMng {
     int streamId;
     boolean loadStatus = false;
 
-    public void load(Context activity) {
-
+    public void load(Context activity, final int level) {
         AudioAttributes attr = new AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_MEDIA)
                 .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
@@ -31,8 +30,11 @@ public class SoundMng {
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                System.out.println(status);
                 if (0 == status) {
+                    System.out.println(status);
                     loadStatus = true;
+                    SoundStart(level);
                 }
                 System.out.println("??????????????????????????");
                 System.out.println(loadStatus);

@@ -15,10 +15,10 @@ public class FifthActivity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fifth);
-        sm.load(getApplicationContext());
+        sm.load(getApplicationContext(),level);
         Button btn = (Button) findViewById(R.id.btn);
         btn.setOnClickListener(this);
-        sm.SoundStart(level);
+        //sm.SoundStart(level);
 
     }
 

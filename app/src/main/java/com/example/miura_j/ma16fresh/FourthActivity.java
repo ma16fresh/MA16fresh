@@ -20,7 +20,7 @@ public class FourthActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fourth);
-        sm.load(getApplicationContext());
+        sm.load(getApplicationContext(),level);
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
     }
