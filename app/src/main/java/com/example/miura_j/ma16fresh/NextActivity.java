@@ -39,36 +39,3 @@ public class NextActivity extends Activity implements View.OnClickListener {
         }
     }
 }
-
-
-/*ちょっとこれは取っておいて
-    public void SoundLoad() {
-        AudioAttributes attr = new AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_MEDIA)
-                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .build();
-
-        soundPool = new SoundPool.Builder()
-                .setAudioAttributes(attr)
-                .setMaxStreams(2)
-                .build();
-        wakeUp = soundPool.load(NextActivity.this, R.raw.okite, 1);
-        soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-            @Override
-            public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                if (0 == status) {
-                    SoundStart();
-                }
-            }
-        });
-    }
-
-    public void SoundStop() {
-        soundPool.stop(streamId);
-        soundPool.release();
-    }
-
-    public void SoundStart() {
-        streamId = soundPool.play(wakeUp, 1F, 1F, 0, -1, 1F);
-    }
-    */

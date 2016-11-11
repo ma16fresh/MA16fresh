@@ -36,20 +36,13 @@ public class SoundMng {
                     loadStatus = true;
                     SoundStart(level);
                 }
-                System.out.println("??????????????????????????");
-                System.out.println(loadStatus);
-                System.out.println("??????????????????????????");
             }
         });
     }
     public void SoundStart(int level) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println(loadStatus);
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
         if(loadStatus  == true) {
             if(level == 0) {
                 streamId = soundPool.play(otsukaresama, 1F, 1F, 0, 0, 1F);
-
             }
             switch(level){
                 case 1:
@@ -76,10 +69,6 @@ public class SoundMng {
     public void SoundStop() {
         soundPool.stop(streamId);
         soundPool.release();
-    }
-
-    public Context getContext() {
-        return context;
     }
 }
 
