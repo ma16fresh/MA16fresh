@@ -1,4 +1,4 @@
-/*package com.example.miura_j.ma16fresh;
+package com.example.miura_j.ma16fresh;
 
 import android.content.Context;
 import android.view.View;
@@ -78,4 +78,4 @@ public class MemeDataItemAdapter extends BaseAdapter {
     private void addItem(int resourceId, Object value) {
         items.add(new String[] {getLabel(resourceId), String.valueOf(value)});
     }
-}*/
+}

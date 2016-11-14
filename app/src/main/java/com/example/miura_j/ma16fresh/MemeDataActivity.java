@@ -1,16 +1,15 @@
-/*package com.example.miura_j.ma16fresh;
+package com.example.miura_j.ma16fresh;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.jins_jp.meme.*;
+import com.jins_jp.meme.MemeLib;
+import com.jins_jp.meme.MemeRealtimeData;
+import com.jins_jp.meme.MemeRealtimeListener;
 
 
 public class MemeDataActivity extends ActionBarActivity {
@@ -79,4 +78,4 @@ public class MemeDataActivity extends ActionBarActivity {
         //Starts receiving realtime data
         memeLib.startDataReport(memeRealtimeListener);
     }
-}*/
+}
