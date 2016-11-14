@@ -2,11 +2,12 @@ package com.example.miura_j.ma16fresh;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
 
-public class FifthActivity extends Activity implements View.OnClickListener{
+public class FifthActivity extends Activity{
     level5_panishment l5 = new level5_panishment();
     int level =5;
     SoundMng sm = new SoundMng();
@@ -17,8 +18,6 @@ public class FifthActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_fifth);
         sm.load(getApplicationContext(),level);
         Button btn = (Button) findViewById(R.id.btn);
-        btn.setOnClickListener(this);
-        //sm.SoundStart(level);
 
     }
 
@@ -33,8 +32,8 @@ public class FifthActivity extends Activity implements View.OnClickListener{
         }*/
     }
 
-    @Override
-    public void onClick(View view) {
+    public boolean onTouchEvent(MotionEvent event){
         sm.SoundStop();
+        return super.onTouchEvent(event);
     }
 }

@@ -41,6 +41,6 @@ public class NextActivity extends Activity implements View.OnClickListener {
     }
     public boolean onTouchEvent(MotionEvent event){
         sm.SoundStop();
-        return true;
+        return super.onTouchEvent(event);
     }
 }
