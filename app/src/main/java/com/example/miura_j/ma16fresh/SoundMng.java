@@ -30,9 +30,7 @@ public class SoundMng {
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                System.out.println(status);
                 if (0 == status) {
-                    System.out.println(status);
                     loadStatus = true;
                     SoundStart(level);
                 }
@@ -62,7 +60,6 @@ public class SoundMng {
                     break;
             }
         }else{
-            System.out.println("ロードできていない");
         }
     }
 
