@@ -30,6 +30,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
     protected void onStart(){
         super.onStart();
         try {
+
             tp.twitterPost(this);
         } catch (TwitterException e) {
             e.printStackTrace();

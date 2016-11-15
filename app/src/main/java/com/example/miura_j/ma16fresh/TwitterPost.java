@@ -1,13 +1,15 @@
 package com.example.miura_j.ma16fresh;
 
+import android.content.Context;
 import android.os.StrictMode;
 
 import java.util.Date;
 
-import twitter4j.*;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
-import android.content.Context;
 
 public class TwitterPost {
 
