@@ -6,38 +6,28 @@ import android.os.StrictMode;
 import java.lang.*;
 import java.io.File;
 import java.io.IOException;
-import com.sendgrid.SendGrid;
-import com.sendgrid.SendGridException;
+import com.sendgrid.*;
 
-public class level5_panishment {
-    public void sendgrid(Context context) throws SendGridException, IOException {
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
-        String apiKey            = System.getenv(context.getString(R.string.sendgridKey));
-
-        String tos             = System.getenv(context.getString(R.string.tosAddress))/*.split(",",0)*/;
-        String from              = System.getenv(context.getString(R.string.fromAddress));
-
-        SendGrid.Email email = new SendGrid.Email();
-        email.addSmtpApiTo(tos);
-        /*email.addSubstitution("fullname", new String[] { "田中 太郎", "佐藤 次郎", "鈴木 三郎" });
-        email.addSubstitution("familyname", new String[] { "田中", "佐藤", "鈴木" });
-        email.addSubstitution("place", new String[] { "office", "home", "office" });
-        email.addSection("office", "中野");
-        email.addSection("home", "目黒");
-        email.addCategory("category1");*/
-        email.setFrom(from);
-        email.setFromName("睡MEME打破");
-        //email.setSubject("[sendgrid-java-example] フクロウのお名前はfullnameさん");
-        //email.setText("familyname さんは何をしていますか？rn 彼はplaceにいます。");
-        //email.setHtml("<strong> familyname さんは何をしていますか？</strong><br />彼はplaceにいます。");
-        email.setSubject("[睡MEME打破] 睡眠注意報");
-        email.setText("三浦くんが寝ています。もう一度言います。三浦くんが業務中に寝ています。");
-        //email.setHtml("<strong> familyname さんは何をしていますか？</strong><br />彼はplaceにいます。");
-        //File file = new File("./gif.gif");
-        //email.addAttachment("owl.gif", file);
-
-        SendGrid sendgrid = new SendGrid(apiKey);
-        SendGrid.Response response = sendgrid.send(email);
-        System.out.println(response.getMessage());
-    }
+public class Example {
+	  public static void main(String[] args) throws IOException {
+		  Email from = new Email("kan-y@gnavi.co.jp");
+		  String subject = "Hello World from the SendGrid Java Library!";
+		  Email to = new Email("miura-j@gnavi.co.jp");
+		  Content content = new Content("text/plain", "Hello, Email!");
+		  Mail mail = new Mail(from, subject, to, content);
+		  
+		  SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
+		  Request request = new Request();
+		  try {
+			  request.method = Method.POST;
+			  request.endpoint = "mail/send";
+			  request.body = mail.build();
+			  Response response = sg.api(request);
+			  System.out.println(response.statusCode);
+			  System.out.println(response.body);
+			  System.out.println(response.headers);
+		  } catch (IOException ex) {
+			  throw ex;
+		  }
+	  }
 }
