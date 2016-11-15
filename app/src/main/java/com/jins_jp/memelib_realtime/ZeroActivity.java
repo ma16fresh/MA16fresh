@@ -18,7 +18,7 @@ public class ZeroActivity extends Activity {
     MemeDataItemAdapter dataItemAdapter;
     int bling_speed = 0;
 
-    private MemeRealtimeListener memeRealtimeListener = new MemeRealtimeListener() {
+    final MemeRealtimeListener memeRealtimeListener = new MemeRealtimeListener() {
         @Override
         public void memeRealtimeCallback(final MemeRealtimeData memeRealtimeData) {
             runOnUiThread(new Runnable() {
@@ -27,13 +27,12 @@ public class ZeroActivity extends Activity {
                     bling_speed = memeRealtimeData.getBlinkSpeed();
                     System.out.println(bling_speed);
                     if(bling_speed != 0){
-                        Intent intent = new Intent(getApplicationContext(), NextActivity.class);
-                        sm.SoundStop();
+                        Intent intent = new Intent(ZeroActivity.this, NextActivity.class);
                         ZeroActivity.this.finish();
                         startActivity(intent);
-                    }
+                    }else{
                     //setSupportProgressBarIndeterminateVisibility(true);
-                    dataItemAdapter.updateMemeData(memeRealtimeData);
+                    dataItemAdapter.updateMemeData(memeRealtimeData);}
                     //dataItemAdapter.notifyDataSetChanged();
                     //setSupportProgressBarIndeterminateVisibility(false);
                 }
@@ -54,6 +53,10 @@ public class ZeroActivity extends Activity {
     protected void onStart() {
         super.onStart();
         System.out.println("???????????????????????");
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
    @Override
