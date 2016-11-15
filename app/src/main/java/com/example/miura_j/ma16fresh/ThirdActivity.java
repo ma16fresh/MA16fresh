@@ -3,6 +3,7 @@ package com.example.miura_j.ma16fresh;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,7 +18,7 @@ public class ThirdActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
-        sm.load(getApplicationContext());
+        sm.load(getApplicationContext(),level);
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
     }
@@ -33,4 +34,8 @@ public class ThirdActivity extends Activity implements View.OnClickListener {
         startActivity(intent);
     }
 
+    public boolean onTouchEvent(MotionEvent event){
+        sm.SoundStop();
+        return super.onTouchEvent(event);
+    }
 }

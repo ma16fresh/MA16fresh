@@ -36,4 +36,5 @@ dependencies {
     compile 'org.facebook4j:facebook4j-core:2.4.8'
     compile 'com.sendgrid:sendgrid-java:2.2.1'
     compile 'com.android.support:design:24.2.1'
+    compile files('../libraries/MemeLib.jar')
 }

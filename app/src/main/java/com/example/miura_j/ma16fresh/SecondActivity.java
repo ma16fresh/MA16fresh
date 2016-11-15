@@ -3,6 +3,7 @@ package com.example.miura_j.ma16fresh;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,10 +21,10 @@ public class SecondActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        sm.load(getApplicationContext());
+        sm.load(getApplicationContext(),level);
         Button nextbtn = (Button) findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(this);
-        sm.SoundStart(level);
+        //sm.SoundStart(level);
     }
 
     protected void onStart(){
@@ -47,6 +48,11 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         intent.putExtra("message",result);
         SecondActivity.this.finish();
         startActivity(intent);
+    }
+
+    public boolean onTouchEvent(MotionEvent event){
+        sm.SoundStop();
+        return super.onTouchEvent(event);
     }
 
 }
