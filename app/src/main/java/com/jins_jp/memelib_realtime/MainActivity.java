@@ -1,5 +1,6 @@
 package com.jins_jp.memelib_realtime;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -20,7 +21,7 @@ import com.jins_jp.meme.MemeStatus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     String appClientId = "609734100985891";
     String appClientSecret = "gulec60gg9s12c1n1uocr9439jtuaejd";
@@ -36,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        //supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
@@ -108,7 +109,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void memeConnectCallback(boolean b) {
                 //describe actions after connection with JINS MEME
-                Intent intent = new Intent(MainActivity.this, MemeDataActivity.class);
+                Intent intent = new Intent(MainActivity.this, ZeroActivity.class);
                 startActivity(intent);
             }
 
@@ -128,7 +129,7 @@ public class MainActivity extends ActionBarActivity {
         scannedAddressAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, scannedAddresses);
         deviceListView.setAdapter(scannedAddressAdapter);
 
-        setSupportProgressBarIndeterminateVisibility(true);
+        //setSupportProgressBarIndeterminateVisibility(true);
         invalidateOptionsMenu();
 
         //starts scanning JINS MEME
@@ -147,12 +148,12 @@ public class MainActivity extends ActionBarActivity {
 
         if (status == MemeStatus.MEME_ERROR_APP_AUTH) {
             Toast.makeText(this, "App Auth Failed", Toast.LENGTH_LONG).show();
-            setSupportProgressBarIndeterminateVisibility(false);
+            //setSupportProgressBarIndeterminateVisibility(false);
         }
     }
 
     void stopScan() {
-        setSupportProgressBarIndeterminateVisibility(false);
+        //setSupportProgressBarIndeterminateVisibility(false);
         invalidateOptionsMenu();
 
         //stop scanning JINS MEME

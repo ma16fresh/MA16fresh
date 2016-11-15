@@ -5,10 +5,41 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
-public class ZeroActivity extends Activity implements View.OnClickListener {
+import com.jins_jp.meme.MemeLib;
+import com.jins_jp.meme.MemeRealtimeData;
+import com.jins_jp.meme.MemeRealtimeListener;
+
+public class ZeroActivity extends Activity {
     int level =0;
     SoundMng sm = new SoundMng();
+    MemeLib memeLib;
+    MemeDataItemAdapter dataItemAdapter;
+    int bling_speed = 0;
+
+    private MemeRealtimeListener memeRealtimeListener = new MemeRealtimeListener() {
+        @Override
+        public void memeRealtimeCallback(final MemeRealtimeData memeRealtimeData) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    bling_speed = memeRealtimeData.getBlinkSpeed();
+                    System.out.println(bling_speed);
+                    if(bling_speed != 0){
+                        Intent intent = new Intent(getApplicationContext(), NextActivity.class);
+                        sm.SoundStop();
+                        ZeroActivity.this.finish();
+                        startActivity(intent);
+                    }
+                    //setSupportProgressBarIndeterminateVisibility(true);
+                    dataItemAdapter.updateMemeData(memeRealtimeData);
+                    //dataItemAdapter.notifyDataSetChanged();
+                    //setSupportProgressBarIndeterminateVisibility(false);
+                }
+            });
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,19 +48,18 @@ public class ZeroActivity extends Activity implements View.OnClickListener {
 
         sm.load(getApplicationContext(),level);
 
-        Button nextbtn = (Button) findViewById(R.id.nextbtn);
-        nextbtn.setOnClickListener(this);
-
-        Intent i = getIntent();
+        memeLib = MemeLib.getInstance();
+        dataItemAdapter = new MemeDataItemAdapter(this);
     }
     protected void onStart() {
         super.onStart();
+        System.out.println("???????????????????????");
     }
 
-    public void onClick(View view) {
-        //Intent intent = new Intent(this, NextActivity.class);
-        sm.SoundStop();
-        ZeroActivity.this.finish();
-        //startActivity(intent);
+   @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        //Starts receiving realtime data
+        memeLib.startDataReport(memeRealtimeListener);
     }
 }
