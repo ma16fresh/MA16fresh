@@ -20,7 +20,7 @@ public class SoundMng {
 
         soundPool = new SoundPool.Builder()
                 .setAudioAttributes(attr)
-                .setMaxStreams(2)
+                .setMaxStreams(1)
                 .build();
 
             wakeUp = soundPool.load(activity, R.raw.okite, 1);
